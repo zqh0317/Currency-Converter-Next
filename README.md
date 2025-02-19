@@ -1,5 +1,5 @@
 # 日本語の紹介 [English version follows after Japanese]　【中文版请拉至最后】  
-## 🌍 為替レート換算器（React版）
+## 🌍 為替レート換算器（Next.js版）
 
 👋 こんにちは、私は **鄭綺慧（ジェン・チフイ）** です。フロントエンド開発者として、React エコシステムに特化し、効率的で保守しやすいアプリケーションの構築を得意としています。
 本プロジェクトは、**独自に開発した為替レート換算 Web アプリケーション** であり、**世界の通貨換算** に対応し、**過去の為替レートデータを可視化** することで、ユーザーがレートの傾向を直感的に理解できるようにしています。
@@ -65,7 +65,7 @@
 
 
 # Enlish Version of Project Introduction
-# 🌍 Currency Converter (React Version)
+# 🌍 Currency Converter (Next.js Version)
 
 👋 Hi, I'm Qihui Zheng, a frontend developer specializing in the React ecosystem. I focus on building efficient and maintainable frontend applications.  
 This project is an **independently developed currency conversion web application** that supports **global currency exchange** and provides **historical exchange rate data visualization** to help users better understand currency trends.
@@ -130,7 +130,7 @@ I independently completed the **requirement analysis, UI design, and frontend de
 
 
 # 中文版项目简介
-# 🌍 汇率转换器（react版）
+# 🌍 汇率转换器（Next.js版）
 
 👋 你好，我是郑绮慧，一名前端开发者，专注于 React 生态，擅长构建高效、可维护的前端应用。
 本项目是一个 **独立开发的汇率换算web application**，支持 **全球货币换算**，并提供 **历史汇率数据的可视化**，帮助用户更直观地了解汇率趋势。
