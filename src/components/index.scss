@@ -1,0 +1,62 @@
+$primary-color: #003366; 
+$secondary-color: #f1c40f; 
+$text-color: #fff;
+
+.trend-container {
+  text-align: center;
+  color: $text-color;
+  flex: 1;
+  width: 100%;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .loading {
+    font-size: 1rem;
+    color: $secondary-color;
+    margin: 20px 0;
+  }
+
+  .chart-wrapper {
+    width: 100%; 
+    max-width: 1200px; 
+    height: 400px;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+
+    //responsive design
+    @media (max-width: 768px) {
+      width: 95%; 
+    }
+  }
+
+  .time-range-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    margin-top: 20px;
+    gap: 10px; 
+
+    button {
+      padding: 10px 15px;
+      background: $primary-color;
+      color: $text-color;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: lighten($primary-color, 10%);
+      }
+
+      &.active {
+        background: $secondary-color;
+      }
+    }
+  }
+}
