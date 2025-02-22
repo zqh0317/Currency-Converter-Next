@@ -3,7 +3,7 @@ import CurrencyTrend from '../components/CurrencyTrend';
 import styles from '@/styles/Converter.module.scss';
 import Link from 'next/link';
 
-// 定义 API 响应的类型
+//Define the API response type
 type CurrencyListResponse = {
   success: boolean;
   currencies: Record<string, string>;
@@ -17,14 +17,14 @@ type ConversionResultResponse = {
 };
 
 const Converter: React.FC = () => {
-  // 定义状态类型
+  //Define the state type
   const [amount, setAmount] = useState<number>(1);
   const [fromCurrency, setFromCurrency] = useState<string>('USD');
   const [toCurrency, setToCurrency] = useState<string>('EUR');
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [currencies, setCurrencies] = useState<string[]>([]);
 
-  // 恢复用户的货币选择
+  //Restore the user’s currency selection
   useEffect(() => {
     const savedFromCurrency = localStorage.getItem('fromCurrency') || 'USD';
     const savedToCurrency = localStorage.getItem('toCurrency') || 'EUR';
@@ -33,7 +33,7 @@ const Converter: React.FC = () => {
     setToCurrency(savedToCurrency);
   }, []);
 
-  // 获取货币列表
+  //Get the list of currencies
   useEffect(() => {
     const fetchCurrencies = async () => {
       try {
@@ -53,7 +53,7 @@ const Converter: React.FC = () => {
     fetchCurrencies();
   }, []);
 
-  // 获取汇率并计算转换结果
+  //Get the exchange rate and calculate the conversion result
   useEffect(() => {
     const fetchRate = async () => {
       try {
@@ -76,7 +76,7 @@ const Converter: React.FC = () => {
 
     fetchRate();
 
-    // 保存用户的货币选择到 localStorage
+    //Save the user’s currency selection to localStorage
     console.log('Saving to localStorage:', fromCurrency, toCurrency);
     localStorage.setItem('fromCurrency', fromCurrency);
     localStorage.setItem('toCurrency', toCurrency);
@@ -86,7 +86,7 @@ const Converter: React.FC = () => {
     <div className={styles.container}>
       <h1>Currency Converter</h1>
 
-      {/* 输入待转换的金额 */}
+      {/* Enter the amount to be converted */}
       <div className={styles.formGroup}>
         <input
           type="number"
@@ -97,7 +97,7 @@ const Converter: React.FC = () => {
           min={1}
         />
 
-        {/* 选择源货币 */}
+        {/* Currency selector */}
         <select 
           className={styles.select} 
           value={fromCurrency} 
@@ -112,7 +112,6 @@ const Converter: React.FC = () => {
 
         <span>convert to</span>
 
-        {/* 选择目标货币 */}
         <select 
           value={toCurrency} 
           className={styles.select}
@@ -126,7 +125,7 @@ const Converter: React.FC = () => {
         </select>
       </div>
 
-      {/* 货币转换结果展示 */}
+      {/* the currency conversion result */}
       <h2>
         Conversion Result:{' '}
         {convertedAmount !== null
@@ -134,7 +133,7 @@ const Converter: React.FC = () => {
           : 'Unable to retrieve the exchange rate, please try again later.'}
       </h2>
 
-      {/* 汇率趋势图 */}
+      {/* Trend chart */}
       <CurrencyTrend fromCurrency={fromCurrency} toCurrency={toCurrency} />
       
       {/* SSR page */}

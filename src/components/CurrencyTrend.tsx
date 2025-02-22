@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import styles from '@/styles/CurrencyTrend.module.scss';
 
-// 定义 Props 类型
+//Define Props type
 type CurrencyTrendProps = {
   fromCurrency: string;
   toCurrency: string;
 };
 
-// 定义数据类型
+//Define data type
 type TrendData = {
   date: string;
   value: number;
@@ -19,12 +19,12 @@ type DataCache = {
 };
 
 const CurrencyTrend: React.FC<CurrencyTrendProps> = ({ fromCurrency, toCurrency }) => {
-  const [data, setData] = useState<TrendData[]>([]); // 数据类型为 TrendData 数组
+  const [data, setData] = useState<TrendData[]>([]); //Data type is a TrendData array
   const [timeRange, setTimeRange] = useState<string>('1M'); 
   const [loading, setLoading] = useState<boolean>(false);
   const [dataCache, setDataCache] = useState<DataCache>({});
 
-  // 兑换率波动范围
+  //Exchange rate fluctuation range
   const timeRanges: Record<string, number> = {
     '1W': 7,
     '1M': 30,
@@ -33,7 +33,7 @@ const CurrencyTrend: React.FC<CurrencyTrendProps> = ({ fromCurrency, toCurrency 
     '1Y': 365,
   };
 
-  // 计算开始日期和结束日期
+  //Calculate the start date and the end date
   const calculateStartDate = (days: number): { start: string; end: string } => {
     const endDate = new Date();
     const startDate = new Date();
@@ -44,7 +44,7 @@ const CurrencyTrend: React.FC<CurrencyTrendProps> = ({ fromCurrency, toCurrency 
     };
   };
 
-  // 请求汇率数据并生成趋势图
+  //Request exchange rate data 
   useEffect(() => {
     const fetchData = async () => {
       const cacheKey = `${fromCurrency}-${toCurrency}-${timeRange}`;
@@ -71,7 +71,7 @@ const CurrencyTrend: React.FC<CurrencyTrendProps> = ({ fromCurrency, toCurrency 
 
           setData(formattedData);
 
-          // 更新缓存
+          //Update cache
           setDataCache((prevCache) => ({
             ...prevCache,
             [cacheKey]: formattedData,
@@ -86,7 +86,7 @@ const CurrencyTrend: React.FC<CurrencyTrendProps> = ({ fromCurrency, toCurrency 
 
     fetchData();
   }, [fromCurrency, toCurrency, timeRange, dataCache]);
-
+  //Generate a trend chart
   return (
     <div className={styles.container}>
       <h2>Exchange Rate Trend: {fromCurrency} to {toCurrency}</h2>
